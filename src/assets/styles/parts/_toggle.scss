@@ -1,0 +1,67 @@
+.rs-selection-toggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+    height: 40px;
+    padding: 8px 32px 8px 16px;
+
+    .rs-rtl-selection & {
+        padding: 8px 16px 8px 32px;
+    }
+
+    .rs-selection-toggle-icon {
+        display: block;
+        position: absolute;
+        right: 16px;
+        content: '';
+        border: 0;
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+
+        svg {
+            stroke: currentColor;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .rs-rtl-selection & {
+            right: unset;
+            left: 16px;
+        }
+    }
+
+    .rs-selection-clear-btn {
+        position: absolute;
+        background-color: $rs-primary;
+        width: 24px;
+        min-width: 24px;
+        height: 24px;
+        min-height: 24px;
+        right: 12px;
+        outline: 0;
+        line-height: 0;
+        border: 0;
+        justify-content: center;
+        top: 50%;
+        transform: translate(0, -50%);
+        border-radius: 50%;
+        padding: 4px;
+        cursor: pointer;
+        z-index: 2;
+
+        svg {
+            g,path {
+                stroke: #ffffff;
+                stroke-width: 2.2px;
+            }
+        }
+
+        .rs-rtl-selection & {
+            left: 12px;
+        }
+    }
+}
