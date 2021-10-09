@@ -1,24 +1,29 @@
 import React from 'react';
+import SelectionDropdownItem from "./item";
+import {selectionTypes} from "../enums";
 
-const SelectionDropdownItems = () => {
+const SelectionDropdownItems = ({selectionType, selectionOptions, handleClickOnOption, rangeItemsPosition}) => {
     // classes
     // is-footer-and-search
     // is-footer-and-no-search
     // no-footer-and-is-search
-    // rs-dropdown-items--{type}
-    // rs-dropdown-items--range-end (if type is range and click other side)
 
-    const classes = "is-footer-and-search rs-dropdown-items--multiple ";
+    let classes = ('rs-dropdown-items--' + selectionType) + " is-footer-and-search ";
 
-    // li classes
-    // rs-dropdown-items__checked
+    if (selectionType === selectionTypes.RANGE) {
+        classes += ' rs-dropdown-items--range-' + rangeItemsPosition;
+    }
 
     return (
         <ul className={"rs-selection-dropdown-items " + classes}>
 
             {
-                [...Array(20)].map((i, k) =>
-                    <li className={((k === 1 || k === 3) ? 'rs-dropdown-items__checked' : '') } key={k}>option {k + 1}</li>
+                selectionOptions.map((option, key) =>
+                    <SelectionDropdownItem
+                        option={option}
+                        key={key}
+                        handleClickOnOption={handleClickOnOption}
+                    />
                 )
             }
 
@@ -26,4 +31,8 @@ const SelectionDropdownItems = () => {
     );
 };
 
-export default React.memo(SelectionDropdownItems);
+function propsAreEqual(prevProps, nextProps) {
+    return (JSON.stringify(prevProps.selectionOptions) === JSON.stringify(nextProps.selectionOptions) && prevProps.rangeItemsPosition === nextProps.rangeItemsPosition);
+}
+
+export default React.memo(SelectionDropdownItems, propsAreEqual);

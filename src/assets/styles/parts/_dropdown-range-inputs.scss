@@ -1,0 +1,17 @@
+.rs-selection-dropdown-range-inputs {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    margin-bottom: 8px;
+    padding: 0 24px;
+
+    input {
+        max-width: calc(50% - 13px);
+        padding: 8px;
+        text-align: center;
+    }
+
+    .rs-selection-dropdown-range-inputs__span {
+        margin: 0 8px;
+    }
+}

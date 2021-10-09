@@ -9,7 +9,7 @@ const SelectionDropdownSearch = () => {
             <div className="rs-selection-dropdown-search__box">
                 <input
                     type="text"
-                    className="rs-selection-dropdown-search__input"
+                    className="rs-selection-dropdown-search__input rs-selection__input"
                     placeholder="search"
                 />
 

@@ -69,7 +69,14 @@
     }
 
 
+    &.rs-dropdown-items--single {
+        li.rs-dropdown-items__checked {
+            background-color: $rs-gray-100;
+        }
+    }
+
     &.rs-dropdown-items--range {
+
         padding-top: 8px;
         display: flex;
         flex-direction: column;
