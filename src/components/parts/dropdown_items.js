@@ -1,8 +1,9 @@
 import React from 'react';
 import SelectionDropdownItem from "./item";
 import {selectionTypes} from "../enums";
+import loading from "../atoms/loading";
 
-const SelectionDropdownItems = ({selectionType, selectionOptions, handleClickOnOption, rangeItemsPosition}) => {
+const SelectionDropdownItems = ({selectionType, selectionName, selectionOptions, handleClickOnOption, rangeItemsPosition, autocomplete, loading}) => {
     // classes
     // is-footer-and-search
     // is-footer-and-no-search
@@ -18,13 +19,24 @@ const SelectionDropdownItems = ({selectionType, selectionOptions, handleClickOnO
         <ul className={"rs-selection-dropdown-items " + classes}>
 
             {
-                selectionOptions.map((option, key) =>
-                    <SelectionDropdownItem
-                        option={option}
-                        key={key}
-                        handleClickOnOption={handleClickOnOption}
-                    />
-                )
+                autocomplete && !selectionOptions.length ?
+                    <li className="rs-selection-dropdown-items__no-options">
+                        {
+                            loading ?
+                                'Loading...'
+                                :
+                                'No options'
+                        }
+                    </li>
+                    :
+                    selectionOptions.map((option, key) =>
+                        <SelectionDropdownItem
+                            selectionName={selectionName}
+                            option={option}
+                            key={key}
+                            handleClickOnOption={handleClickOnOption}
+                        />
+                    )
             }
 
         </ul>
@@ -32,7 +44,12 @@ const SelectionDropdownItems = ({selectionType, selectionOptions, handleClickOnO
 };
 
 function propsAreEqual(prevProps, nextProps) {
-    return (JSON.stringify(prevProps.selectionOptions) === JSON.stringify(nextProps.selectionOptions) && prevProps.rangeItemsPosition === nextProps.rangeItemsPosition);
+    return (
+        JSON.stringify(prevProps.selectionOptions) === JSON.stringify(nextProps.selectionOptions) &&
+        prevProps.rangeItemsPosition === nextProps.rangeItemsPosition &&
+        prevProps.autocomplete === nextProps.autocomplete &&
+        prevProps.loading === nextProps.loading
+    );
 }
 
 export default React.memo(SelectionDropdownItems, propsAreEqual);

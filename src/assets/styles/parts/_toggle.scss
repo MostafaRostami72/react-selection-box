@@ -2,10 +2,6 @@
     position: relative;
     width: 100%;
 
-    .rs-rtl-selection & {
-        padding: 8px 16px 8px 32px;
-    }
-
     .rs-selection-toggle-icon {
         display: block;
         position: absolute;
@@ -58,6 +54,7 @@
 
         .rs-rtl-selection & {
             left: 12px;
+            right: unset;
         }
     }
 }

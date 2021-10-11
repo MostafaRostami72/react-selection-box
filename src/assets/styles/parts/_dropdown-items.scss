@@ -66,6 +66,21 @@
         .rs-rtl-selection & {
             padding: 8px 24px 8px 0;
         }
+
+        &.rs-selection-dropdown-items__no-options {
+            text-align: center;
+            padding: 8px 0;
+            cursor: default;
+            color: $rs-gray-300;
+
+            &:hover {
+                background-color: transparent;
+            }
+
+            &:before {
+                display: none !important;
+            }
+        }
     }
 
 
@@ -84,14 +99,6 @@
 
         &.rs-dropdown-items--range-end {
             align-items: flex-end;
-        }
-
-        .rs-rtl-selection & {
-            align-items: flex-end;
-
-            &.rs-dropdown-items--range-end {
-                align-items: flex-start;
-            }
         }
 
         li {

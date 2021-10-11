@@ -2,12 +2,12 @@ import PropTypes from 'prop-types';
 import {selectionTypes} from "../enums";
 
 export const ISelectionTypes = () => {
-    return PropTypes.oneOf(Object.values(selectionTypes)).isRequired;
+    return PropTypes.oneOf(Object.values(selectionTypes));
 }
 
 export const ISelectionOption = () => {
     return PropTypes.shape({
-        value: PropTypes.any.isRequired,
+        value: PropTypes.any,
         label: PropTypes.any.isRequired,
         checked: PropTypes.bool.isRequired,
     }).isRequired

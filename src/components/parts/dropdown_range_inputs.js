@@ -1,9 +1,22 @@
 import React from 'react';
 
-const SelectionDropdownRangeInputs = ({setRangeItemsPosition, selectedRange}) => {
+const SelectionDropdownRangeInputs = ({setRangeItemsPosition, selectedRange, setSelectedRange}) => {
     const {min, max} = selectedRange;
     let minValue = (min && typeof min === "object" && min.value) ? min.value : '';
     let maxValue = (max && typeof max === "object" && max.value) ? max.value : '';
+
+    const handleChange = (e, type) => {
+        const {value} = e.target;
+
+        let newSelectedRange = JSON.parse(JSON.stringify(selectedRange));
+
+        newSelectedRange[type] = {
+            value: Number(value),
+            label: value,
+        };
+
+        setSelectedRange(newSelectedRange);
+    }
 
     return (
         <div className="rs-selection-dropdown-range-inputs">
@@ -11,6 +24,7 @@ const SelectionDropdownRangeInputs = ({setRangeItemsPosition, selectedRange}) =>
                    value={minValue}
                    className="rs-selection__input"
                    placeholder="min"
+                   onChange={(e) => handleChange(e, 'min')}
                    onFocus={() => setRangeItemsPosition('start')}
             />
 
@@ -20,6 +34,7 @@ const SelectionDropdownRangeInputs = ({setRangeItemsPosition, selectedRange}) =>
                    value={maxValue}
                    className="rs-selection__input"
                    placeholder="max"
+                   onChange={(e) => handleChange(e, 'max')}
                    onFocus={() => setRangeItemsPosition('end')}
             />
         </div>

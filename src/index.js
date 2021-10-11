@@ -12,9 +12,15 @@ const Selection = ({
                        type = 'single',
                        options,
                        label,
+                       name,
+                       onChange,
                        rtl = false,
                        searchable = true,
                        cleanable = true,
+                       autocomplete = false,
+                       onChangeAutocomplete,
+                       loading = false,
+                       disabled = false,
                        countSelectedInCaption = 3,
                        defaultSelectedRange = {},
                    }) => {
@@ -30,6 +36,8 @@ const Selection = ({
 
     // useEffect
     useEffect(() => {
+        setSelectionOptions(options);
+
         if (options.length && type !== selectionTypes.RANGE) {
             let checked = [];
 
@@ -58,7 +66,51 @@ const Selection = ({
     })
 
     // func
-    const handleToggleDropdown = (show) => {
+    const handleToggleDropdown = (show, value = null) => {
+
+        if (!show && type === selectionTypes.RANGE) {
+            let newSelectedRange = JSON.parse(JSON.stringify(selectedRange));
+
+            newSelectedRange = compareMinAndMax(newSelectedRange);
+
+            setSelectedRange(newSelectedRange);
+
+            value = newSelectedRange;
+        }
+
+        if (!show && onChange && typeof onChange === 'function') {
+            let result = null;
+
+            switch (type) {
+                case selectionTypes.SINGLE:
+                    result = value ? {value: value} : null;
+                    break;
+
+                case selectionTypes.MULTIPLE:
+                    let multipleValue = [];
+
+                    if (selectedItems && selectedItems.length) {
+                        for (let option of selectedItems) {
+                            multipleValue.push(option.value);
+                        }
+                    }
+
+                    result = {value: multipleValue};
+                    break;
+
+                case selectionTypes.RANGE:
+
+                    const {min, max} = value ? value : selectedRange;
+
+                    result = {
+                        min: min ? min.value : null,
+                        max: max ? max.value : null,
+                    };
+                    break;
+            }
+
+            onChange(result);
+        }
 
         setDropdownShow(show);
     }
@@ -79,6 +131,29 @@ const Selection = ({
         setSelectionOptions(newOptions);
 
         setSelectedItems([]);
+
+        if (!dropdownShow && onChange && typeof onChange === 'function') {
+            let result = null;
+
+            switch (type) {
+                case selectionTypes.SINGLE:
+                    result = null;
+                    break;
+
+                case selectionTypes.MULTIPLE:
+                    result = {value: []};
+                    break;
+
+                case selectionTypes.RANGE:
+                    result = {
+                        min: null,
+                        max: null,
+                    };
+                    break;
+            }
+
+            onChange(result);
+        }
     }
 
     const handleClickOnOption = (value) => {
@@ -86,21 +161,21 @@ const Selection = ({
             case selectionTypes.SINGLE:
                 if (value) {
                     const newOptions = JSON.parse(JSON.stringify(selectionOptions));
-                    let selectedOption = [];
+                    let selectedOption = null;
 
                     for (let option of newOptions) {
                         option.checked = (option.value === value);
 
                         if (option.value === value) {
-                            selectedOption = [option];
+                            selectedOption = option;
                         }
                     }
 
                     setSelectionOptions(newOptions);
 
-                    setSelectedItems(selectedOption);
+                    setSelectedItems(selectedOption ? [selectedOption] : []);
 
-                    handleToggleDropdown(false);
+                    handleToggleDropdown(false, selectedOption ? selectedOption.value : '');
                 }
                 break;
 
@@ -149,11 +224,7 @@ const Selection = ({
                 } else {
                     newSelectedRange.max = data;
 
-                    const {min, max} = newSelectedRange;
-                    if (min && min.value && max && max.value && min.value > max.value) {
-                        newSelectedRange.min = max;
-                        newSelectedRange.max = min;
-                    }
+                    newSelectedRange = compareMinAndMax(newSelectedRange);
 
                     handleToggleDropdown(false);
                 }
@@ -162,6 +233,17 @@ const Selection = ({
 
                 break;
         }
+    }
+
+    const compareMinAndMax = (value) => {
+        const {min, max} = value;
+
+        if (min && Number(min.value) && max && Number(max.value) && Number(min.value) > Number(max.value)) {
+            value.min = max;
+            value.max = min;
+        }
+
+        return value;
     }
 
     return (
@@ -176,17 +258,25 @@ const Selection = ({
                 selectedItems={selectedItems}
                 handleClearSelection={handleClearSelection}
                 selectedRange={selectedRange}
+                loading={loading}
+                disabled={disabled}
             />
 
             <SelectionDropdown
                 dropdownShow={dropdownShow}
                 selectionType={type}
+                selectionName={name}
                 searchable={searchable}
                 selectionOptions={selectionOptions}
                 handleClickOnOption={(value) => handleClickOnOption(value)}
                 rangeItemsPosition={rangeItemsPosition}
                 setRangeItemsPosition={setRangeItemsPosition}
                 selectedRange={selectedRange}
+                setSelectedRange={setSelectedRange}
+                selectionRef={selectionRef}
+                onChangeAutocomplete={onChangeAutocomplete}
+                autocomplete={autocomplete}
+                loading={loading}
             />
         </div>
     )
@@ -195,9 +285,15 @@ const Selection = ({
 Selection.propTypes = {
     rtl: PropTypes.bool,
     options: PropTypes.arrayOf(ISelectionOption()).isRequired,
-    type: ISelectionTypes(),
+    type: ISelectionTypes().isRequired,
+    name: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
     searchable: PropTypes.bool,
     cleanable: PropTypes.bool,
+    autocomplete: PropTypes.bool,
+    onChangeAutocomplete: PropTypes.func,
+    loading: PropTypes.bool,
+    disabled: PropTypes.bool,
     label: PropTypes.string.isRequired,
     countSelectedInCaption: PropTypes.number,
     defaultSelectedRange: IDefaultSelectedRange(),

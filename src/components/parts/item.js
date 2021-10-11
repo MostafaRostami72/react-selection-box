@@ -1,11 +1,11 @@
 import React from 'react';
 
-const SelectionDropdownItem = ({option, handleClickOnOption}) => {
+const SelectionDropdownItem = ({selectionName, option, handleClickOnOption}) => {
 
     return (
         <li
             onClick={() => handleClickOnOption(option.value)}
-            className={(option.checked ? 'rs-dropdown-items__checked' : '')}
+            className={('rs-dropdown-item--' + selectionName + '-' + option.value) + (option.checked ? ' rs-dropdown-items__checked' : '')}
         >{option.label}</li>
     );
 };

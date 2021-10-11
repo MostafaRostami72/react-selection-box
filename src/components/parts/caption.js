@@ -44,8 +44,8 @@ const Caption = ({countSelectedInCaption, selectionType, label, selectedItems = 
     }
 
     return (
-        <div onClick={onClick} className="rs-selection-caption rs-clearable-caption">
-            {getCaption()}
+        <div onClick={onClick} className="rs-selection-caption">
+            <span>{getCaption()}</span>
         </div>
     );
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import ChevronDownIcon from "../atoms/icons/chevron-down";
 import CloseIcon from "../atoms/icons/close";
 import Caption from "./caption";
+import SelectionLoading from "../atoms/loading";
 
 const Toggle = ({
                     label,
@@ -12,7 +13,9 @@ const Toggle = ({
                     countSelectedInCaption,
                     selectedItems,
                     handleClearSelection,
-                    selectedRange
+                    selectedRange,
+                    loading,
+                    disabled
                 }) => {
 
     return (
@@ -27,14 +30,19 @@ const Toggle = ({
             />
 
             {
-                (cleanable && Array.isArray(selectedItems) && selectedItems.length) ?
-                    <button className="rs-selection-clear-btn" onClick={handleClearSelection}>
-                        <CloseIcon/>
-                    </button>
+                loading ?
+                    <SelectionLoading/>
                     :
-                    <div className="rs-selection-toggle-icon">
-                        <ChevronDownIcon/>
-                    </div>
+                    (
+                        (cleanable && Array.isArray(selectedItems) && selectedItems.length) ?
+                            <button className="rs-selection-clear-btn" onClick={handleClearSelection}>
+                                <CloseIcon/>
+                            </button>
+                            :
+                            <div className="rs-selection-toggle-icon">
+                                <ChevronDownIcon/>
+                            </div>
+                    )
             }
         </div>
     );
