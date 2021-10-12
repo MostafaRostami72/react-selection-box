@@ -1,31 +1,40 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import { DocumentTextIcon,ChevronRightIcon } from '@heroicons/react/outline'
+import {useLocation} from "react-router-dom";
+import {DocumentTextIcon, ChevronRightIcon} from '@heroicons/react/outline'
 
 const Sidebar = () => {
+    const location = useLocation();
+    const {pathname} = location;
+    console.log(pathname)
 
     const items = [
         {
-            link:'/',
+            link: '/',
             title: 'Getting Started',
+            active: (pathname === '/')
         },
 
         {
-            link:'/basic_usage',
+            link: '/basic_usage',
             title: 'Basic Usage',
+            active: (pathname === '/basic_usage')
         },
         {
-            link:'',
-            title: 'Components',
+            link: '/example',
+            title: 'Example',
+            active: (pathname === '/example')
         },
         {
-            link:'',
+            link: '/props',
             title: 'Props',
+            active: (pathname === '/props')
         },
 
         {
-            link:'',
+            link: '/styles',
             title: 'Styles',
+            active: (pathname === '/styles')
         },
     ]
 
@@ -40,8 +49,8 @@ const Sidebar = () => {
                         <li className="header-menu"><span>Menu</span></li>
 
                         {
-                            items.map((item,key) =>
-                                <li key={key} className="mt-2">
+                            items.map((item, key) =>
+                                <li key={key} className={"mt-2 " + (item.active ? 'active' : '')}>
                                     <Link to={item.link}>
                                         <DocumentTextIcon className="sidebar-icon"/>
                                         <span className="menu-text">{item.title}</span>

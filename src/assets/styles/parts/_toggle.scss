@@ -4,7 +4,9 @@
     border-radius: 8px;
 
     .rs-selection-toggle-icon {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         position: absolute;
         right: 16px;
         top: 50%;

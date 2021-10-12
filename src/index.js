@@ -15,6 +15,7 @@ const Selection = ({
                        label,
                        name,
                        onChange,
+                       className,
                        rtl = false,
                        searchable = true,
                        cleanable = true,
@@ -261,7 +262,7 @@ const Selection = ({
     const lang = getTranslates(translates);
 
     return (
-        <div ref={selectionRef} className={"rs-selection-container " + (rtl ? 'rs-rtl-selection' : '')}>
+        <div ref={selectionRef} className={"rs-selection-container " + (rtl ? 'rs-rtl-selection ' : '') + (className ?? '')}>
             <Toggle
                 label={label}
                 selectionType={type}
@@ -314,6 +315,7 @@ Selection.propTypes = {
     loading: PropTypes.bool,
     disabled: PropTypes.bool,
     label: PropTypes.string.isRequired,
+    className: PropTypes.string,
     countSelectedInCaption: PropTypes.number,
     defaultSelectedRange: IDefaultSelectedRange(),
     translates: ITranslates()

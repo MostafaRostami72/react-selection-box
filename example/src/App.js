@@ -7,6 +7,7 @@ import {sidebarCollapsed} from "./app/Redux/Selectors/SidebarCollapseSelectors";
 import Home from "./pages/home";
 import RightSide from "./components/includes/right_side";
 import BasicUsage from "./pages/basic_usage";
+import 'react-selection-box/dist/index.css'
 
 const App = () => {
     const sidebarIsCollapse = useSelector(sidebarCollapsed);
