@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import CloseIcon from "../atoms/icons/close";
 
-const SelectionDropdownSearch = ({handleSearchOptions}) => {
+const SelectionDropdownSearch = ({handleSearchOptions,lang}) => {
     const [search, setSearch] = useState('');
 
     const handleSearchInput = (e) => {
@@ -22,7 +22,7 @@ const SelectionDropdownSearch = ({handleSearchOptions}) => {
                     value={search}
                     onChange={handleSearchInput}
                     className="rs-selection-dropdown-search__input rs-selection__input"
-                    placeholder="search"
+                    placeholder={lang.search}
                 />
 
                 {

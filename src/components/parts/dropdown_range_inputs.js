@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SelectionDropdownRangeInputs = ({setRangeItemsPosition, selectedRange, setSelectedRange}) => {
+const SelectionDropdownRangeInputs = ({setRangeItemsPosition, selectedRange, setSelectedRange,lang}) => {
     const {min, max} = selectedRange;
     let minValue = (min && typeof min === "object" && min.value) ? min.value : '';
     let maxValue = (max && typeof max === "object" && max.value) ? max.value : '';
@@ -23,7 +23,7 @@ const SelectionDropdownRangeInputs = ({setRangeItemsPosition, selectedRange, set
             <input type="tel"
                    value={minValue}
                    className="rs-selection__input"
-                   placeholder="min"
+                   placeholder={lang.min}
                    onChange={(e) => handleChange(e, 'min')}
                    onFocus={() => setRangeItemsPosition('start')}
             />
@@ -33,7 +33,7 @@ const SelectionDropdownRangeInputs = ({setRangeItemsPosition, selectedRange, set
             <input type="tel"
                    value={maxValue}
                    className="rs-selection__input"
-                   placeholder="max"
+                   placeholder={lang.max}
                    onChange={(e) => handleChange(e, 'max')}
                    onFocus={() => setRangeItemsPosition('end')}
             />

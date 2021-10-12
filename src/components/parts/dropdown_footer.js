@@ -1,11 +1,11 @@
 import React from 'react';
 
-const SelectionDropdownFooter = ({selectionOptionsLength}) => {
+const SelectionDropdownFooter = ({selectionOptionsLength, lang}) => {
     return (
         <div className="rs-selection-dropdown-footer">
             {
                 selectionOptionsLength &&
-                <button type="button" className="rs-selection-dropdown-footer__btn-submit">submit</button>
+                <button type="button" className="rs-selection-dropdown-footer__btn-submit">{lang.apply}</button>
             }
         </div>
     );

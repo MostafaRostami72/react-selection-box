@@ -19,7 +19,7 @@ const App = () => {
             options.push({
                 value: key,
                 label: countryListAlpha2[key],
-                checked: (i === 0)
+                checked: false
             })
         })
 
@@ -95,6 +95,11 @@ const App = () => {
                     options={items()}
                     label={"Select Countries"}
                     onChange={(data) => console.log(data)}
+                    translates={{
+                        placeholder: {
+                            search: "جستجو",
+                        }
+                    }}
                 />
             </div>
 
@@ -107,6 +112,18 @@ const App = () => {
                     options={items()}
                     label={"Select Countries"}
                     onChange={(data) => console.log(data)}
+                    translates={{
+                        label: {
+                            from: "از",
+                            to: "تا"
+                        },
+                        placeholder: {
+                            search: "جستجو",
+                        },
+                        button: {
+                            apply: "انتخاب",
+                        }
+                    }}
                 />
             </div>
 
@@ -117,8 +134,20 @@ const App = () => {
                     name={'prices'}
                     options={getPricesOptions()}
                     label={"Select Price"}
-                    defaultSelectedRange={defaultSelectedRange}
                     onChange={(data) => console.log(data)}
+                    translates={{
+                        label: {
+                            from: "از",
+                            to: "تا"
+                        },
+                        placeholder: {
+                            min: "حداقل",
+                            max: "حداکثر",
+                        },
+                        button: {
+                            apply: "انتخاب",
+                        }
+                    }}
                 />
             </div>
 
@@ -126,7 +155,7 @@ const App = () => {
 
             <div className="box">
                 <Selection
-                    rtl={false}
+                    rtl={true}
                     type={'multiple'}
                     name={'auto'}
                     options={autoComplete.options}
@@ -135,6 +164,16 @@ const App = () => {
                     loading={autoComplete.loading}
                     onChange={(data) => console.log(data)}
                     onChangeAutocomplete={handleChangeAutocomplete}
+                    translates={{
+                        placeholder: {
+                            search:'جستجو'
+                        },
+                        button: {
+                            apply: "انتخاب",
+                        },
+                        loading: 'درحال دریافت...',
+                        no_options: 'موردی یافت نشد!'
+                    }}
                 />
             </div>
         </div>

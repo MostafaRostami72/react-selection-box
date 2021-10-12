@@ -3,7 +3,7 @@ import SelectionDropdownItem from "./item";
 import {selectionTypes} from "../enums";
 import loading from "../atoms/loading";
 
-const SelectionDropdownItems = ({selectionType, selectionName, selectionOptions, handleClickOnOption, rangeItemsPosition, autocomplete, loading}) => {
+const SelectionDropdownItems = ({selectionType, selectionName, selectionOptions, handleClickOnOption, rangeItemsPosition, autocomplete, loading, lang}) => {
     // classes
     // is-footer-and-search
     // is-footer-and-no-search
@@ -23,9 +23,9 @@ const SelectionDropdownItems = ({selectionType, selectionName, selectionOptions,
                     <li className="rs-selection-dropdown-items__no-options">
                         {
                             loading ?
-                                'Loading...'
+                                lang.loading
                                 :
-                                'No options'
+                                lang.no_options
                         }
                     </li>
                     :

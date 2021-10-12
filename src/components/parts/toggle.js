@@ -15,7 +15,7 @@ const Toggle = ({
                     handleClearSelection,
                     selectedRange,
                     loading,
-                    disabled
+                    lang
                 }) => {
 
     return (
@@ -27,6 +27,7 @@ const Toggle = ({
                 label={label}
                 onClick={() => handleToggleDropdown(!dropdownShow)}
                 selectedRange={selectedRange}
+                lang={lang}
             />
 
             {

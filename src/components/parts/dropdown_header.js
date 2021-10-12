@@ -1,12 +1,12 @@
 import React from 'react';
 import ArrowLeftIcon from "../atoms/icons/arrow-left";
 
-const SelectionDropdownHeader = () => {
+const SelectionDropdownHeader = ({selectionLabel}) => {
 
     return (
         <div className="rs-selection-dropdown-header">
             <div className="rs-selection-dropdown-header__title">
-                header title
+                {selectionLabel}
             </div>
 
             <button className="rs-selection-dropdown-header__back">

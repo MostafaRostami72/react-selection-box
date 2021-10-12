@@ -26,3 +26,21 @@ export const IDefaultSelectedRange = () => {
         max: IValueAnsLabelShape(),
     })
 }
+
+export const ITranslates = () => {
+    return PropTypes.shape({
+        label: PropTypes.shape({
+            from: PropTypes.string,
+            to: PropTypes.string
+        }),
+        placeholder: PropTypes.shape({
+            min: PropTypes.string,
+            max: PropTypes.string,
+            search: PropTypes.string,
+        }),
+        button: PropTypes.shape({
+            apply: PropTypes.string,
+            cancel: PropTypes.string,
+        })
+    })
+}

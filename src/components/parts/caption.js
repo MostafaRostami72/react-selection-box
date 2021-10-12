@@ -1,7 +1,7 @@
 import React from 'react';
 import {selectionTypes} from "../enums";
 
-const Caption = ({countSelectedInCaption, selectionType, label, selectedItems = [], onClick, selectedRange}) => {
+const Caption = ({countSelectedInCaption, selectionType, label, selectedItems = [], onClick, selectedRange, lang}) => {
 
     const getCaption = () => {
         let caption = label;
@@ -30,12 +30,12 @@ const Caption = ({countSelectedInCaption, selectionType, label, selectedItems = 
             }
 
             if (min && typeof min === "object" && min.label && min.value) {
-                caption += 'from ';
+                caption += lang.from + ' ';
                 caption += min.label;
             }
 
             if (max && typeof max === "object" && max.label && max.value) {
-                caption += ' to ';
+                caption += ' ' + lang.to + ' ';
                 caption += max.label;
             }
         }

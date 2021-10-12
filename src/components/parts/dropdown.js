@@ -9,6 +9,7 @@ import SelectionDropdownRangeInputs from "./dropdown_range_inputs";
 
 const SelectionDropdown = ({
                                dropdownShow,
+                               selectionLabel,
                                selectionType,
                                selectionName,
                                searchable,
@@ -21,7 +22,8 @@ const SelectionDropdown = ({
                                selectionRef,
                                onChangeAutocomplete,
                                autocomplete,
-                               loading
+                               loading,
+                               lang
                            }) => {
 
     const handleSearchOptions = (pattern) => {
@@ -60,12 +62,15 @@ const SelectionDropdown = ({
         <div className={"rs-selection-dropdown " + classes}>
             <div className="rs-selection-dropdown__wrapper">
 
-                <SelectionDropdownHeader/>
+                <SelectionDropdownHeader
+                    selectionLabel={selectionLabel}
+                />
 
                 {
                     searchable && selectionType !== selectionTypes.RANGE ?
                         <SelectionDropdownSearch
                             handleSearchOptions={handleSearchOptions}
+                            lang={lang}
                         />
                         :
                         (
@@ -74,6 +79,7 @@ const SelectionDropdown = ({
                                     setRangeItemsPosition={setRangeItemsPosition}
                                     selectedRange={selectedRange}
                                     setSelectedRange={setSelectedRange}
+                                    lang={lang}
                                 />
                                 : ''
                         )
@@ -87,12 +93,14 @@ const SelectionDropdown = ({
                     rangeItemsPosition={rangeItemsPosition}
                     autocomplete={autocomplete}
                     loading={loading}
+                    lang={lang}
                 />
 
                 {
                     selectionType !== selectionTypes.SINGLE &&
                     <SelectionDropdownFooter
                         selectionOptionsLength={(selectionOptions.length > 0)}
+                        lang={lang}
                     />
                 }
             </div>

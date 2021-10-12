@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import './assets/styles/styles.scss';
 import Toggle from "./components/parts/toggle";
 import SelectionDropdown from "./components/parts/dropdown";
-import {IDefaultSelectedRange, ISelectionOption, ISelectionTypes} from "./components/mixins/custom_props_types";
+import {IDefaultSelectedRange, ISelectionOption, ISelectionTypes, ITranslates} from "./components/mixins/custom_props_types";
 import {array_unique} from "./components/mixins/arrays";
 import {selectionTypes} from "./components/enums";
+import {getTranslates} from "./components/mixins/translate";
 
 
 const Selection = ({
@@ -23,6 +24,7 @@ const Selection = ({
                        disabled = false,
                        countSelectedInCaption = 3,
                        defaultSelectedRange = {},
+                       translates = {}
                    }) => {
 
     const selectionRef = useRef(null);
@@ -246,6 +248,8 @@ const Selection = ({
         return value;
     }
 
+    const lang = getTranslates(translates);
+
     return (
         <div ref={selectionRef} className={"rs-selection-container " + (rtl ? 'rs-rtl-selection' : '')}>
             <Toggle
@@ -259,11 +263,12 @@ const Selection = ({
                 handleClearSelection={handleClearSelection}
                 selectedRange={selectedRange}
                 loading={loading}
-                disabled={disabled}
+                lang={lang}
             />
 
             <SelectionDropdown
                 dropdownShow={dropdownShow}
+                selectionLabel={label}
                 selectionType={type}
                 selectionName={name}
                 searchable={searchable}
@@ -277,6 +282,7 @@ const Selection = ({
                 onChangeAutocomplete={onChangeAutocomplete}
                 autocomplete={autocomplete}
                 loading={loading}
+                lang={lang}
             />
         </div>
     )
@@ -297,6 +303,7 @@ Selection.propTypes = {
     label: PropTypes.string.isRequired,
     countSelectedInCaption: PropTypes.number,
     defaultSelectedRange: IDefaultSelectedRange(),
+    translates: ITranslates()
 }
 
 export default React.memo(Selection);
