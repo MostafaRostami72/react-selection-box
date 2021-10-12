@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import { DocumentTextIcon,ChevronRightIcon } from '@heroicons/react/outline'
 
 const Sidebar = () => {
@@ -10,7 +11,7 @@ const Sidebar = () => {
         },
 
         {
-            link:'',
+            link:'/basic_usage',
             title: 'Basic Usage',
         },
         {
@@ -41,12 +42,12 @@ const Sidebar = () => {
                         {
                             items.map((item,key) =>
                                 <li key={key} className="mt-2">
-                                    <a href={item.link}>
+                                    <Link to={item.link}>
                                         <DocumentTextIcon className="sidebar-icon"/>
                                         <span className="menu-text">{item.title}</span>
 
                                         <ChevronRightIcon className="sidebar-chevron-right"/>
-                                    </a>
+                                    </Link>
                                 </li>
                             )
                         }
