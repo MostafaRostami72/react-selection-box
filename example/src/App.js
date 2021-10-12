@@ -161,6 +161,7 @@ const App = () => {
                     options={autoComplete.options}
                     label={"Auto complete"}
                     autocomplete={true}
+                    disabled={false}
                     loading={autoComplete.loading}
                     onChange={(data) => console.log(data)}
                     onChangeAutocomplete={handleChangeAutocomplete}

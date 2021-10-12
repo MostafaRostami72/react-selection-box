@@ -92,6 +92,7 @@ const SelectionDropdown = ({
                     handleClickOnOption={handleClickOnOption}
                     rangeItemsPosition={rangeItemsPosition}
                     autocomplete={autocomplete}
+                    searchable={searchable}
                     loading={loading}
                     lang={lang}
                 />

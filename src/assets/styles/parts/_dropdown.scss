@@ -20,7 +20,7 @@
         min-width: 300px;
     }
 
-    &.rs-selection-dropdown--multiple, .rs-selection-dropdown--range {
+    &.rs-selection-dropdown--multiple, &.rs-selection-dropdown--range {
         padding-bottom: 0 !important;
     }
 

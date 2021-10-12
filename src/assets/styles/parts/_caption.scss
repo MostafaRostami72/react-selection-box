@@ -9,9 +9,16 @@
     font-stretch: normal;
     font-style: normal;
     line-height: 1.36;
+    border-radius: 8px;
     letter-spacing: normal;
     color: $rs-black;
     cursor: pointer;
+
+    .rs-selection-toggle--disabled & {
+        background-color: $rs-gray-200;
+        color: $rs-gray-400;
+        cursor: not-allowed;
+    }
 
     > span {
         text-overflow: ellipsis;

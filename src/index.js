@@ -24,7 +24,9 @@ const Selection = ({
                        disabled = false,
                        countSelectedInCaption = 3,
                        defaultSelectedRange = {},
-                       translates = {}
+                       translates = {},
+                       onShow,
+                       onHide
                    }) => {
 
     const selectionRef = useRef(null);
@@ -112,6 +114,14 @@ const Selection = ({
             }
 
             onChange(result);
+        }
+
+        if (show && typeof onShow === 'function') {
+            onShow(show)
+        }
+
+        if (!show && typeof onHide === 'function') {
+            onHide(show)
         }
 
         setDropdownShow(show);
@@ -263,6 +273,7 @@ const Selection = ({
                 handleClearSelection={handleClearSelection}
                 selectedRange={selectedRange}
                 loading={loading}
+                disabled={disabled}
                 lang={lang}
             />
 
@@ -298,6 +309,8 @@ Selection.propTypes = {
     cleanable: PropTypes.bool,
     autocomplete: PropTypes.bool,
     onChangeAutocomplete: PropTypes.func,
+    onShow: PropTypes.func,
+    onHide: PropTypes.func,
     loading: PropTypes.bool,
     disabled: PropTypes.bool,
     label: PropTypes.string.isRequired,

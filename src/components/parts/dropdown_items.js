@@ -1,19 +1,44 @@
 import React from 'react';
 import SelectionDropdownItem from "./item";
 import {selectionTypes} from "../enums";
-import loading from "../atoms/loading";
 
-const SelectionDropdownItems = ({selectionType, selectionName, selectionOptions, handleClickOnOption, rangeItemsPosition, autocomplete, loading, lang}) => {
+const SelectionDropdownItems = ({
+                                    selectionType,
+                                    selectionName,
+                                    selectionOptions,
+                                    handleClickOnOption,
+                                    rangeItemsPosition,
+                                    autocomplete,
+                                    searchable,
+                                    loading,
+                                    lang
+                                }) => {
     // classes
-    // is-footer-and-search
-    // is-footer-and-no-search
-    // no-footer-and-is-search
+    // rs-has-footer-and-search
+    //
+    //
 
-    let classes = ('rs-dropdown-items--' + selectionType) + " is-footer-and-search ";
+    let hasSearchInput = searchable;
+    let hasFooter = true;
+
+    let classes = ('rs-dropdown-items--' + selectionType);
 
     if (selectionType === selectionTypes.RANGE) {
         classes += ' rs-dropdown-items--range-' + rangeItemsPosition;
+        hasSearchInput = true;
     }
+
+    if (selectionType === selectionTypes.SINGLE) {
+        hasFooter = false;
+    }
+
+    classes += (hasSearchInput && hasFooter) ? ' rs-has-footer-and-search ' :
+        (
+            hasSearchInput && !hasFooter ? ' rs-has-search-and-no-footer ' :
+                (
+                    hasFooter && !hasSearchInput ? ' rs-has-footer-and-no-search ' : ''
+                )
+        );
 
     return (
         <ul className={"rs-selection-dropdown-items " + classes}>

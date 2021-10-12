@@ -15,17 +15,21 @@ const Toggle = ({
                     handleClearSelection,
                     selectedRange,
                     loading,
+                    disabled,
                     lang
                 }) => {
 
+    let classes = (loading ? ' rs-selection-toggle--loading' : '');
+    classes += (disabled ? ' rs-selection-toggle--disabled' : '');
+
     return (
-        <div className="rs-selection-toggle">
+        <div className={"rs-selection-toggle" + classes}>
             <Caption
                 countSelectedInCaption={countSelectedInCaption}
                 selectionType={selectionType}
                 selectedItems={selectedItems}
                 label={label}
-                onClick={() => handleToggleDropdown(!dropdownShow)}
+                onClick={() => (!loading && !disabled) ? handleToggleDropdown(!dropdownShow) : null}
                 selectedRange={selectedRange}
                 lang={lang}
             />

@@ -25,17 +25,17 @@
         padding-bottom: 24px !important;
         -webkit-overflow-scrolling: touch;
 
-        &.is-footer-and-search {
+        &.rs-has-footer-and-search {
             height: calc(100% - 169px); // dropdown with footer and search
             max-height: calc(100% - 169px); // dropdown with footer and search
         }
 
-        &.is-footer-and-no-search {
+        &.rs-has-footer-and-no-search {
             height: calc(100% - 129px); // dropdown without search
             max-height: calc(100% - 129px); // dropdown without search
         }
 
-        &.no-footer-and-is-search {
+        &.rs-has-search-and-no-footer {
             height: calc(100% - 104px); // dropdown without footer
             max-height: calc(100% - 104px); // dropdown without footer
         }
