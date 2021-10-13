@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 
 import Selection from 'react-selection-box'
 import 'react-selection-box/dist/index.css'
-import {countryListAlpha2} from "./countries";
+import {countryListAlpha} from "./countries";
 
 var setTime = undefined;
 
@@ -15,10 +15,10 @@ const App = () => {
     const items = () => {
         let options = [];
 
-        Object.keys(countryListAlpha2).forEach((key, i) => {
+        Object.keys(countryListAlpha).forEach((key, i) => {
             options.push({
                 value: key,
-                label: countryListAlpha2[key],
+                label: countryListAlpha[key],
                 checked: false
             })
         })

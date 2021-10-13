@@ -30,6 +30,16 @@ import 'react-selection-box/dist/index.css'
                 }
             </Code>
 
+            <h3 className="mt-5 font-weight-bold">Types</h3>
+            <p className="">With this package, you can create select input with the following types.</p>
+            <ul>
+                <li>Single select</li>
+                <li>Multiple select</li>
+                <li>Range select</li>
+                <li>Async select (autocomplete)</li>
+            </ul>
+            <p className="text-secondary">See the example page for more details.</p>
+
             <h3 className="mt-5 font-weight-bold">Styles</h3>
 
             <Link to="/styles">Additional Details about the styles</Link>

@@ -7,6 +7,7 @@ import {sidebarCollapsed} from "./app/Redux/Selectors/SidebarCollapseSelectors";
 import Home from "./pages/home";
 import RightSide from "./components/includes/right_side";
 import BasicUsage from "./pages/basic_usage";
+import Examples from "./pages/examples";
 import 'react-selection-box/dist/index.css'
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
                             <Switch>
                                 <Route path="/" exact component={Home}/>
                                 <Route path="/basic_usage" exact component={BasicUsage}/>
+                                <Route path="/examples" exact component={Examples}/>
                             </Switch>
                         </article>
 

@@ -21,9 +21,9 @@ const Sidebar = () => {
             active: (pathname === '/basic_usage')
         },
         {
-            link: '/example',
+            link: '/examples',
             title: 'Example',
-            active: (pathname === '/example')
+            active: (pathname === '/examples')
         },
         {
             link: '/props',
