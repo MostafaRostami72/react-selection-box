@@ -3,7 +3,7 @@ import Selection from 'react-selection-box'
 import {countryListAlpha} from "../../../countries";
 import SelectionFeatures from "../features";
 
-const MultipleSelection = () => {
+const MultipleSelection = ({withDefault = false}) => {
     const [features2, setFeatures] = useState({
         searchable: true,
         cleanable: true,
@@ -22,7 +22,7 @@ const MultipleSelection = () => {
             options.push({
                 value: key,
                 label: countryListAlpha[key],
-                checked: false
+                checked: (withDefault && (key === 'CA' || key === 'AU' || key === 'DE'))
             })
         })
 
@@ -66,12 +66,15 @@ const MultipleSelection = () => {
                 />
             </div>
 
-            <div className="col-lg-12">
-                <SelectionFeatures
-                    features={features2}
-                    setFeatures={setFeatures}
-                    type="multiple"/>
-            </div>
+            {
+                !withDefault &&
+                <div className="col-lg-12">
+                    <SelectionFeatures
+                        features={features2}
+                        setFeatures={setFeatures}
+                        type="multiple"/>
+                </div>
+            }
         </div>
     );
 };

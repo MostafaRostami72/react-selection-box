@@ -1,7 +1,7 @@
 import React from 'react';
 import Code from "../../code";
 
-const SingleSelectionPre = () => {
+const SingleSelectionPre = ({withDefault=false}) => {
     return (
         <Code>
             {
@@ -19,7 +19,7 @@ const SingleSelection = () => {
             options.push({
                 value: key,
                 label: countryListAlpha[key],
-                checked: false
+                checked: ${withDefault ? '(key === \'CA\') // selected default Canada' : 'false'}
             })
         })
 
@@ -58,4 +58,4 @@ export default SingleSelection;
     );
 };
 
-export default SingleSelectionPre;
+export default React.memo(SingleSelectionPre);

@@ -3,7 +3,7 @@ import Selection from 'react-selection-box'
 import {countryListAlpha} from "../../../countries";
 import SelectionFeatures from "../features";
 
-const SingleSelection = () => {
+const SingleSelection = ({withDefault = false}) => {
     const [features, setFeatures] = useState({
         searchable: true,
         cleanable: true,
@@ -22,7 +22,7 @@ const SingleSelection = () => {
             options.push({
                 value: key,
                 label: countryListAlpha[key],
-                checked: false
+                checked: (withDefault && key === 'CA')
             })
         })
 
@@ -43,8 +43,8 @@ const SingleSelection = () => {
                     label="Select Countries"
                     options={options()}
                     onChange={handleChange}
-                    searchable={searchable}
-                    cleanable={cleanable}
+                    searchable={withDefault ?? searchable}
+                    cleanable={withDefault ?? cleanable}
                     loading={loading}
                     disabled={disabled}
                     rtl={rtl}
@@ -56,12 +56,15 @@ const SingleSelection = () => {
                 />
             </div>
 
-            <div className="col-lg-12">
-                <SelectionFeatures
-                    features={features}
-                    setFeatures={setFeatures}
-                />
-            </div>
+            {
+                !withDefault &&
+                <div className="col-lg-12">
+                    <SelectionFeatures
+                        features={features}
+                        setFeatures={setFeatures}
+                    />
+                </div>
+            }
         </div>
     );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import Selection from 'react-selection-box'
 
-const RangeSelection = () => {
+const RangeSelection = ({withDefault = false}) => {
 
     const getPricesOptions = () => {
         let options = [];
@@ -25,6 +25,17 @@ const RangeSelection = () => {
 
     const handleChange = (value) => {
         console.log(value)
+    }
+
+    const defaultSelectedRange = {
+        min: {
+            value: 1000,
+            label: '$1K'
+        },
+        max: {
+            value: 3000,
+            label: '$3K'
+        },
     }
 
     const translates = {
@@ -51,6 +62,7 @@ const RangeSelection = () => {
                     label="Select Price"
                     options={getPricesOptions()}
                     onChange={handleChange}
+                    defaultSelectedRange={withDefault ? defaultSelectedRange : {}}
                     translates={translates}
                 />
 

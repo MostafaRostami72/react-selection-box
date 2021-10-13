@@ -78,6 +78,42 @@ const Examples = () => {
 
             </div>
 
+            <hr className="my-5"/>
+
+            <div className="">
+                <ViewRecourse title="Single Select with default option selected">
+                    <SingleSelectionPre withDefault/>
+                </ViewRecourse>
+
+
+                <SingleSelection withDefault/>
+
+            </div>
+
+            <hr className="my-5"/>
+
+            <div className="">
+                <ViewRecourse title="Multiple Select with default options selected">
+                    <MultipleSelectionPre withDefault/>
+                </ViewRecourse>
+
+
+                <MultipleSelection withDefault/>
+
+            </div>
+
+            <hr className="my-5"/>
+
+            <div className="">
+                <ViewRecourse title="Range Select with default range">
+                    <RangeSelectionPre withDefault/>
+                </ViewRecourse>
+
+
+                <RangeSelection withDefault/>
+
+            </div>
+
             <NextPage
                 title="Props"
                 url="/props"

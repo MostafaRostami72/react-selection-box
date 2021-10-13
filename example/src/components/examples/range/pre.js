@@ -1,7 +1,7 @@
 import React from 'react';
 import Code from "../../code";
 
-const RangeSelectionPre = () => {
+const RangeSelectionPre = ({withDefault = false}) => {
     return (
         <Code>
             {
@@ -35,6 +35,23 @@ const RangeSelection = () => {
         console.log(value)
     }
 
+    ${
+                    withDefault ?
+                        `
+    const defaultSelectedRange = {
+        min: {
+            value: 1000,
+            label: '$1K'
+        },
+        max: {
+            value: 3000,
+            label: '$3K'
+        },
+    }
+                        `
+                    : ''
+                }
+    
     const translates = {
         label: {
             from: "from",
@@ -60,6 +77,7 @@ const RangeSelection = () => {
                     options={getPricesOptions()}
                     onChange={handleChange}
                     translates={translates}
+                    ${withDefault ? `defaultSelectedRange={defaultSelectedRange}` : ''}
                 />
 
             </div>

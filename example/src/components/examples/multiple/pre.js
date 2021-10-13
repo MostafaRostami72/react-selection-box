@@ -1,7 +1,7 @@
 import React from 'react';
 import Code from "../../code";
 
-const MultipleSelectionPre = () => {
+const MultipleSelectionPre = ({withDefault = false}) => {
     return (
         <Code>
             {
@@ -19,7 +19,7 @@ const MultipleSelection = () => {
             options.push({
                 value: key,
                 label: countryListAlpha[key],
-                checked: false
+                checked: ${withDefault ? '(key === \'CA\' || key === \'AU\' || key === \'DE\') // selected default countries' : 'false'}
             })
         })
 
