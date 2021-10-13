@@ -301,22 +301,22 @@ const Selection = ({
 }
 
 Selection.propTypes = {
-    rtl: PropTypes.bool,
-    options: PropTypes.arrayOf(ISelectionOption()).isRequired,
-    type: ISelectionTypes().isRequired,
+    label: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
+    type: ISelectionTypes().isRequired,
+    options: PropTypes.arrayOf(ISelectionOption()).isRequired,
     onChange: PropTypes.func.isRequired,
+    className: PropTypes.string,
+    countSelectedInCaption: PropTypes.number,
+    rtl: PropTypes.bool,
     searchable: PropTypes.bool,
     cleanable: PropTypes.bool,
+    loading: PropTypes.bool,
+    disabled: PropTypes.bool,
     autocomplete: PropTypes.bool,
     onChangeAutocomplete: PropTypes.func,
     onShow: PropTypes.func,
     onHide: PropTypes.func,
-    loading: PropTypes.bool,
-    disabled: PropTypes.bool,
-    label: PropTypes.string.isRequired,
-    className: PropTypes.string,
-    countSelectedInCaption: PropTypes.number,
     defaultSelectedRange: IDefaultSelectedRange(),
     translates: ITranslates()
 }

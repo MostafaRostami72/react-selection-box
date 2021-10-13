@@ -1,0 +1,38 @@
+
+.props-items {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid $danger;
+
+    pre {
+        margin-bottom: 0;
+        background-color: #f0f8ff;
+        padding: 8px;
+        border-radius: 8px;
+    }
+}
+
+.props-features {
+    display: flex;
+    align-items: center;
+    background-color: $gray-100;
+    border-bottom: 1px solid $gray-200;
+
+    .props-features-name {
+        width: 200px;
+        height: 100%;
+    }
+
+    .props-features-value {
+        flex: 1;
+        background-color: #ffffff;
+    }
+
+    .props-features-name, .props-features-value {
+        padding: 8px;
+    }
+
+    &:last-child {
+        border-bottom: 0;
+    }
+}

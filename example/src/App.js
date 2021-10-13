@@ -9,6 +9,7 @@ import RightSide from "./components/includes/right_side";
 import BasicUsage from "./pages/basic_usage";
 import Examples from "./pages/examples";
 import 'react-selection-box/dist/index.css'
+import PropsPage from "./pages/props";
 
 const App = () => {
     const sidebarIsCollapse = useSelector(sidebarCollapsed);
@@ -30,6 +31,7 @@ const App = () => {
                                 <Route path="/" exact component={Home}/>
                                 <Route path="/basic_usage" exact component={BasicUsage}/>
                                 <Route path="/examples" exact component={Examples}/>
+                                <Route path="/props" exact component={PropsPage}/>
                             </Switch>
                         </article>
 

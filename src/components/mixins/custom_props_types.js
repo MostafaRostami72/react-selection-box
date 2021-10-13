@@ -41,6 +41,8 @@ export const ITranslates = () => {
         button: PropTypes.shape({
             apply: PropTypes.string,
             cancel: PropTypes.string,
-        })
+        }),
+        loading: PropTypes.string,
+        no_options: PropTypes.string
     })
 }
