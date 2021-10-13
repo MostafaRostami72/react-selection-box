@@ -43,8 +43,8 @@ const SingleSelection = ({withDefault = false}) => {
                     label="Select Countries"
                     options={options()}
                     onChange={handleChange}
-                    searchable={withDefault ?? searchable}
-                    cleanable={withDefault ?? cleanable}
+                    searchable={searchable}
+                    cleanable={cleanable}
                     loading={loading}
                     disabled={disabled}
                     rtl={rtl}

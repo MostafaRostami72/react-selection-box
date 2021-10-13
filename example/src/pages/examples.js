@@ -116,7 +116,7 @@ const Examples = () => {
 
             <NextPage
                 title="Props"
-                url="/props"
+                url="/react-selection-box/props"
             />
         </div>
     );

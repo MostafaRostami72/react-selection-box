@@ -46,7 +46,7 @@ import 'react-selection-box/dist/index.css'
 
             <NextPage
                 title="Basic Usage"
-                url="/basic_usage"
+                url="/react-selection-box/basic_usage"
             />
         </div>
     );

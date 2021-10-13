@@ -10,31 +10,31 @@ const Sidebar = () => {
 
     const items = [
         {
-            link: '/',
+            link: '/react-selection-box',
             title: 'Getting Started',
-            active: (pathname === '/')
+            active: (pathname === '/react-selection-box' || pathname === '/react-selection-box/')
         },
 
         {
-            link: '/basic_usage',
+            link: '/react-selection-box/basic_usage',
             title: 'Basic Usage',
-            active: (pathname === '/basic_usage')
+            active: (pathname === '/react-selection-box/basic_usage')
         },
         {
-            link: '/examples',
+            link: '/react-selection-box/examples',
             title: 'Example',
-            active: (pathname === '/examples')
+            active: (pathname === '/react-selection-box/examples')
         },
         {
-            link: '/props',
+            link: '/react-selection-box/props',
             title: 'Props',
-            active: (pathname === '/props')
+            active: (pathname === '/react-selection-box/props')
         },
 
         {
-            link: '/styles',
+            link: '/react-selection-box/styles',
             title: 'Styles',
-            active: (pathname === '/styles')
+            active: (pathname === '/react-selection-box/styles')
         },
     ]
 

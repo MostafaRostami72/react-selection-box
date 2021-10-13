@@ -30,7 +30,7 @@ const BasicUsage = () => {
 
             <NextPage
                 title="Examples"
-                url="/examples"
+                url="/react-selection-box/examples"
             />
         </div>
     );
