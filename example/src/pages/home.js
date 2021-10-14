@@ -42,7 +42,7 @@ import 'react-selection-box/dist/index.css'
 
             <h3 className="mt-5 font-weight-bold">Styles</h3>
 
-            <Link to="/styles">Additional Details about the styles</Link>
+            <Link to="/react-selection-box/styles">Additional Details about the styles</Link>
 
             <NextPage
                 title="Basic Usage"
