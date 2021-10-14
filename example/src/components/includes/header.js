@@ -1,5 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
+import GitHubButton from 'react-github-btn';
 import {MenuIcon} from '@heroicons/react/outline'
 import {sidebarCollapsed} from "../../app/Redux/Selectors/SidebarCollapseSelectors";
 import {sidebarCollapseAction} from "../../app/Redux/Actions/SidebarCollapseActions";
@@ -21,17 +22,17 @@ const Header = () => {
                 </button>
             </div>
 
-            <div className="col-md-8">
-                <nav aria-label="breadcrumb" className="align-items-center">
+            <div className="col-md-11 d-flex align-items-center justify-content-end">
+                <div className="github-icon">
+                    <GitHubButton href="https://github.com/MostafaRostami72/react-selection-box" data-show-count="true" data-size="large" aria-label="Star react-selection-box on GitHub">Star</GitHubButton>
+                </div>
 
-                    <ol className="breadcrumb d-none d-lg-inline-flex m-0">
-                        <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li className="breadcrumb-item active" aria-current="page">Layout 2</li>
-                    </ol>
-                </nav>
+                <a href="https://www.npmjs.com/package/react-selection-box" target="_blank" className="ml-3">
+                    <img alt="npm" src="https://img.shields.io/npm/v/react-selection-box.svg"/>
+                </a>
             </div>
         </div>
     );
 };
 
-export default Header;
+export default React.memo(Header);

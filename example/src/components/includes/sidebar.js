@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {useLocation} from "react-router-dom";
-import {DocumentTextIcon, ChevronRightIcon} from '@heroicons/react/outline'
+import {DocumentTextIcon, ChevronRightIcon, CubeIcon, CursorClickIcon, KeyIcon, PhotographIcon} from '@heroicons/react/outline'
 
 const Sidebar = () => {
     const location = useLocation();
@@ -12,29 +12,34 @@ const Sidebar = () => {
         {
             link: '/react-selection-box',
             title: 'Getting Started',
-            active: (pathname === '/react-selection-box' || pathname === '/react-selection-box/')
+            active: (pathname === '/react-selection-box' || pathname === '/react-selection-box/'),
+            icon: CubeIcon
         },
 
         {
             link: '/react-selection-box/basic_usage',
             title: 'Basic Usage',
-            active: (pathname === '/react-selection-box/basic_usage')
+            active: (pathname === '/react-selection-box/basic_usage'),
+            icon: CursorClickIcon
         },
         {
             link: '/react-selection-box/examples',
             title: 'Example',
-            active: (pathname === '/react-selection-box/examples')
+            active: (pathname === '/react-selection-box/examples'),
+            icon: DocumentTextIcon
         },
         {
             link: '/react-selection-box/props',
             title: 'Props',
-            active: (pathname === '/react-selection-box/props')
+            active: (pathname === '/react-selection-box/props'),
+            icon: KeyIcon
         },
 
         {
             link: '/react-selection-box/styles',
             title: 'Styles',
-            active: (pathname === '/react-selection-box/styles')
+            active: (pathname === '/react-selection-box/styles'),
+            icon: PhotographIcon
         },
     ]
 
@@ -52,7 +57,7 @@ const Sidebar = () => {
                             items.map((item, key) =>
                                 <li key={key} className={"mt-2 " + (item.active ? 'active' : '')}>
                                     <Link to={item.link}>
-                                        <DocumentTextIcon className="sidebar-icon"/>
+                                        <item.icon className="sidebar-icon"/>
                                         <span className="menu-text">{item.title}</span>
 
                                         <ChevronRightIcon className="sidebar-chevron-right"/>
