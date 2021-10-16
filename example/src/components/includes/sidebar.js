@@ -6,7 +6,6 @@ import {DocumentTextIcon, ChevronRightIcon, CubeIcon, CursorClickIcon, KeyIcon, 
 const Sidebar = () => {
     const location = useLocation();
     const {pathname} = location;
-    console.log(pathname)
 
     const items = [
         {

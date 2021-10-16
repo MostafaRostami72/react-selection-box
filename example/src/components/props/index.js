@@ -42,7 +42,7 @@ const PropsItems = () => {
         getOnHidePropItems(),
         getTranslatesPropItems(),
     ];
-    console.log(items)
+
     return (
         <div>
             {

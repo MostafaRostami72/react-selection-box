@@ -13,6 +13,7 @@
     "@heroicons/react": "^1.0.4",
     "bootstrap": "^4.3.1",
     "node-sass": "^6.0.1",
+    "nprogress": "^0.2.0",
     "react": "file:../node_modules/react",
     "react-dom": "file:../node_modules/react-dom",
     "react-github-btn": "^1.2.1",
@@ -21,6 +22,7 @@
     "react-scripts": "file:../node_modules/react-scripts",
     "react-selection-box": "file:..",
     "react-syntax-highlighter": "^15.4.4",
+    "react-transition-group": "^4.4.2",
     "redux": "^4.1.1",
     "sass": "^1.42.1",
     "styled-components": "^5.3.1"
