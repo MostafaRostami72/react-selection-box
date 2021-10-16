@@ -1,11 +1,11 @@
 import React from 'react';
 
-const SelectionDropdownFooter = ({selectionOptionsLength, lang}) => {
+const SelectionDropdownFooter = ({handleToggleDropdown, selectionOptionsLength, lang}) => {
     return (
         <div className="rs-selection-dropdown-footer">
             {
                 selectionOptionsLength &&
-                <button type="button" className="rs-selection-dropdown-footer__btn-submit">{lang.apply}</button>
+                <button type="button" onClick={() => handleToggleDropdown(false)} className="rs-selection-dropdown-footer__btn-submit">{lang.apply}</button>
             }
         </div>
     );

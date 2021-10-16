@@ -286,6 +286,7 @@ const Selection = ({
                 searchable={searchable}
                 selectionOptions={selectionOptions}
                 handleClickOnOption={(value) => handleClickOnOption(value)}
+                handleToggleDropdown={handleToggleDropdown}
                 rangeItemsPosition={rangeItemsPosition}
                 setRangeItemsPosition={setRangeItemsPosition}
                 selectedRange={selectedRange}

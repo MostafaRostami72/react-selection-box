@@ -21,6 +21,7 @@ const SelectionDropdown = ({
                                setSelectedRange,
                                selectionRef,
                                onChangeAutocomplete,
+                               handleToggleDropdown,
                                autocomplete,
                                loading,
                                lang
@@ -101,6 +102,7 @@ const SelectionDropdown = ({
                     selectionType !== selectionTypes.SINGLE &&
                     <SelectionDropdownFooter
                         selectionOptionsLength={(selectionOptions.length > 0)}
+                        handleToggleDropdown={handleToggleDropdown}
                         lang={lang}
                     />
                 }
