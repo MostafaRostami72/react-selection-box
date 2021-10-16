@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, lazy, Suspense} from 'react';
 import {Route, Switch, useLocation} from 'react-router-dom';
 import {CSSTransition, TransitionGroup} from 'react-transition-group'
 import {useDispatch, useSelector} from 'react-redux'
@@ -8,13 +8,14 @@ import Sidebar from "./components/includes/sidebar";
 import Header from "./components/includes/header";
 import TopProgress from "./components/includes/top_progress";
 import RightSide from "./components/includes/right_side";
-import Home from "./pages/home";
-import BasicUsage from "./pages/basic_usage";
-import Examples from "./pages/examples";
-import PropsPage from "./pages/props";
-import Styles from "./pages/styles";
 import 'react-selection-box/dist/index.css'
 import "nprogress/nprogress.css";
+
+const Home = lazy(() => import('./pages/home'));
+const BasicUsage = lazy(() => import('./pages/basic_usage'));
+const Examples = lazy(() => import('./pages/examples'));
+const PropsPage = lazy(() => import('./pages/props'));
+const Styles = lazy(() => import('./pages/styles'));
 
 const App = () => {
     const sidebarIsCollapse = useSelector(sidebarCollapsed);
@@ -64,13 +65,15 @@ const App = () => {
                                     }}
                                     timeout={1200}
                                 >
-                                    <Switch>
-                                        <Route path="/react-selection-box/basic_usage" exact component={BasicUsage}/>
-                                        <Route path="/react-selection-box/examples" exact component={Examples}/>
-                                        <Route path="/react-selection-box/props" exact component={PropsPage}/>
-                                        <Route path="/react-selection-box/styles" exact component={Styles}/>
-                                        <Route path="/react-selection-box/" component={Home}/>
-                                    </Switch>
+                                    <Suspense fallback={<div>Loading...</div>}>
+                                        <Switch>
+                                            <Route path="/react-selection-box/basic_usage" exact component={BasicUsage}/>
+                                            <Route path="/react-selection-box/examples" exact component={Examples}/>
+                                            <Route path="/react-selection-box/props" exact component={PropsPage}/>
+                                            <Route path="/react-selection-box/styles" exact component={Styles}/>
+                                            <Route path="/react-selection-box/" component={Home}/>
+                                        </Switch>
+                                    </Suspense>
                                 </CSSTransition>
                             </TransitionGroup>
                         </article>
