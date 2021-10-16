@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {Route, Switch, useLocation} from 'react-router-dom';
 import {CSSTransition, TransitionGroup} from 'react-transition-group'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {sidebarCollapsed} from "./app/Redux/Selectors/SidebarCollapseSelectors";
+import {sidebarCollapseAction} from "./app/Redux/Actions/SidebarCollapseActions";
 import Sidebar from "./components/includes/sidebar";
 import Header from "./components/includes/header";
 import TopProgress from "./components/includes/top_progress";
@@ -18,21 +19,33 @@ import "nprogress/nprogress.css";
 const App = () => {
     const sidebarIsCollapse = useSelector(sidebarCollapsed);
     const location = useLocation();
+    const dispatch = useDispatch();
+
+    const handleSidebarToggle = () => {
+        dispatch(sidebarCollapseAction(!sidebarIsCollapse));
+    }
 
     const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
         window.scrollTo(0, 0); //Go to top on every page load
+
+        if (window.innerWidth < 992) {
+            setTimeout(() => {
+                dispatch(sidebarCollapseAction(true));
+            }, 500)
+        }
     }, [location]);
 
     return (
         <div className={"page-wrapper light-theme" + (sidebarIsCollapse ? '' : ' toggled ')}>
-            <TopProgress isLoading={isLoading} />
+            <TopProgress isLoading={isLoading}/>
 
             <Sidebar/>
 
             <main className="page-content h-100">
-                <div id="overlay" className="overlay"/>
+                <div id="overlay" className="overlay" onClick={handleSidebarToggle}/>
+
                 <div className="container-fluid h-100">
 
                     <Header/>

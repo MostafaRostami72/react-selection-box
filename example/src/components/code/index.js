@@ -10,8 +10,6 @@ const Code = ({children, className, dark = true}) => {
             language="jsx"
             style={dark ? gml : prism}
             showLineNumbers
-            wrapLongLines
-            wrapLines
         >
             {children}
         </SyntaxHighlighter>

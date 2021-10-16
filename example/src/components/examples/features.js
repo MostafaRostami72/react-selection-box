@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from "styled-components";
 
 const SelectionFeatures = ({features, setFeatures, type = 'single'}) => {
 
@@ -14,7 +15,7 @@ const SelectionFeatures = ({features, setFeatures, type = 'single'}) => {
     }
 
     return (
-        <div className="mt-3 d-flex align-items-center">
+        <Container className="mt-3 d-flex align-items-center">
             {
                 features ?
                     Object.keys(features).map((feature, key) => {
@@ -36,8 +37,14 @@ const SelectionFeatures = ({features, setFeatures, type = 'single'}) => {
                     })
                     : ''
             }
-        </div>
+        </Container>
     );
 };
 
 export default React.memo(SelectionFeatures);
+
+// styles
+
+const Container = styled.div`
+  overflow-x: auto;
+`

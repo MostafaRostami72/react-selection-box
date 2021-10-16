@@ -20,12 +20,19 @@
 
     .props-features-name {
         width: 200px;
+        min-width: 200px;
         height: 100%;
+
+        @media (max-width: 921px) {
+            width: 100px;
+            min-width: 100px;
+        }
     }
 
     .props-features-value {
         flex: 1;
         background-color: #ffffff;
+        overflow-x: auto;
     }
 
     .props-features-name, .props-features-value {

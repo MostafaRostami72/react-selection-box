@@ -15,14 +15,14 @@ const Header = () => {
 
     return (
         <div className="row d-flex align-items-center p-3 border-bottom">
-            <div className="col-md-1">
+            <div className="col-2 col-md-1 d-flex align-items-center justify-content-start">
 
                 <button className="btn sidebar-collapse-btn" onClick={handleSidebarToggle}>
                     <MenuIcon/>
                 </button>
             </div>
 
-            <div className="col-md-11 d-flex align-items-center justify-content-end">
+            <div className="col-10 col-md-11 d-flex flex-column flex-md-row align-items-end align-items-md-center justify-content-end">
                 <div className="github-icon">
                     <GitHubButton href="https://github.com/MostafaRostami72/react-selection-box" data-show-count="true" data-size="large" aria-label="Star react-selection-box on GitHub">Star</GitHubButton>
                 </div>
