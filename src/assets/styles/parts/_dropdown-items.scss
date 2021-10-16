@@ -17,7 +17,7 @@
         text-align: right;
     }
 
-    @media only screen and (max-width: $rs-screen-sm-max) {
+    @media only screen and (max-width: $rs-screen-xs-max) {
         height: calc(100% - 64px); // dropdown without footer and search
         max-height: calc(100% - 64px); // dropdown without footer and search
         margin: 0;
@@ -26,8 +26,8 @@
         -webkit-overflow-scrolling: touch;
 
         &.rs-has-footer-and-search {
-            height: calc(100% - 169px); // dropdown with footer and search
-            max-height: calc(100% - 169px); // dropdown with footer and search
+            height: calc(100% - 179px); // dropdown with footer and search
+            max-height: calc(100% - 179px); // dropdown with footer and search
         }
 
         &.rs-has-footer-and-no-search {

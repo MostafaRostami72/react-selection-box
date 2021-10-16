@@ -65,6 +65,7 @@ const SelectionDropdown = ({
 
                 <SelectionDropdownHeader
                     selectionLabel={selectionLabel}
+                    handleToggleDropdown={handleToggleDropdown}
                 />
 
                 {

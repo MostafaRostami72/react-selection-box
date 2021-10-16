@@ -73,7 +73,8 @@ function propsAreEqual(prevProps, nextProps) {
         JSON.stringify(prevProps.selectionOptions) === JSON.stringify(nextProps.selectionOptions) &&
         prevProps.rangeItemsPosition === nextProps.rangeItemsPosition &&
         prevProps.autocomplete === nextProps.autocomplete &&
-        prevProps.loading === nextProps.loading
+        prevProps.loading === nextProps.loading &&
+        prevProps.searchable === nextProps.searchable
     );
 }
 
