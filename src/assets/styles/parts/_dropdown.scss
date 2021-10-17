@@ -22,6 +22,10 @@
 
     &.rs-selection-dropdown--multiple, &.rs-selection-dropdown--range {
         padding-bottom: 0 !important;
+
+        @media only screen and (max-width: $rs-screen-sm-max) {
+            padding-top: 0 !important;
+        }
     }
 
     .rs-selection-dropdown__wrapper {

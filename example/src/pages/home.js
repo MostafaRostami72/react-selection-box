@@ -41,7 +41,7 @@ import 'react-selection-box/dist/index.css'
             <p className="text-secondary">See the example page for more details.</p>
 
             <h3 className="mt-5 font-weight-bold">Styles</h3>
-
+            <p>Flexible and responsive in mobile, tablet and desktop.</p>
             <Link to="/react-selection-box/styles">Additional Details about the styles</Link>
 
             <NextPage
