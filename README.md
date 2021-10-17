@@ -11,13 +11,40 @@
 ## Install
 
 ```bash
-npm install --save react-selection-box
+npm install react-selection-box
 ```
+
+## Types
+With this package, you can create select input with the following types.
+
+* Single select
+* Multiple select
+* Range select
+* Async select (autocomplete)
+
+See the document page for more examples.
+
+## Some features
+* Searchable
+* Cleanable
+* Loading
+* Disabled
+* RTL
+* Translates
+* Show Label
+* ...
+
+Please see the document page for more examples.
+
+## Async (autocomplete)
+Easily create an autocomplete selection to  get values from the server by typing and list them for the user.
+
+Please see the [document](https://mostafarostami72.github.io/react-selection-box) page and go to examples.
 
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import React  from 'react'
 
 import Selection from 'react-selection-box'
 import 'react-selection-box/dist/index.css'
@@ -38,11 +65,22 @@ const MyComponent = () => {
         <div>
 
             <Selection
+                type="single" // single, muliple, renge
                 name="counties"
                 label="Select Counties"
                 className=""
                 options={options}
                 onChange={handleChange}
+                searchable={true}
+                cleanable={true}
+                loading={false}
+                disabled={false}
+                rtl={false}
+                translates={{
+                    placeholder: {
+                        search: "Search countries"
+                    }
+                }}
             />
 
         </div>
