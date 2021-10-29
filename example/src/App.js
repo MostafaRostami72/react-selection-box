@@ -65,7 +65,7 @@ const App = () => {
                                     }}
                                     timeout={1200}
                                 >
-                                    <Suspense fallback={''}>
+                                    <Suspense fallback={null}>
                                         <Switch>
                                             <Route path="/react-selection-box/basic_usage" exact component={BasicUsage}/>
                                             <Route path="/react-selection-box/examples" exact component={Examples}/>
