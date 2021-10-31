@@ -73,7 +73,7 @@ const Selection = ({
     // func
     const handleToggleDropdown = (show, value = null) => {
 
-        if (!show && type === selectionTypes.RANGE) {
+        if (!show && !value && type === selectionTypes.RANGE) {
             let newSelectedRange = JSON.parse(JSON.stringify(selectedRange));
 
             newSelectedRange = compareMinAndMax(newSelectedRange);
@@ -130,7 +130,16 @@ const Selection = ({
 
     function handleClickOutside(event) {
         if (selectionRef.current && !selectionRef.current.contains(event.target) && dropdownShow) {
-            handleToggleDropdown(false);
+            let value = null;
+
+            switch (type) {
+                case selectionTypes.SINGLE:
+                    if (selectedItems && selectedItems.length) {
+                        value = selectedItems[0]?.value
+                    }
+            }
+
+            handleToggleDropdown(false, value);
         }
     }
 
@@ -172,62 +181,61 @@ const Selection = ({
     const handleClickOnOption = (value) => {
         switch (type) {
             case selectionTypes.SINGLE:
-                if (value) {
-                    const newOptions = JSON.parse(JSON.stringify(selectionOptions));
-                    let selectedOption = null;
 
-                    for (let option of newOptions) {
-                        option.checked = (option.value === value);
-
-                        if (option.value === value) {
-                            selectedOption = option;
-                        }
-                    }
-
-                    setSelectionOptions(newOptions);
-
-                    setSelectedItems(selectedOption ? [selectedOption] : []);
-
-                    handleToggleDropdown(false, selectedOption ? selectedOption.value : '');
-                }
-                break;
-
-            case selectionTypes.MULTIPLE:
-                if (value) {
-                    const newOptions = JSON.parse(JSON.stringify(selectionOptions));
-                    let selectedOption = [];
-
-                    for (let option of newOptions) {
-                        if (option && option.value === value) {
-                            option.checked = !option.checked;
-                        }
-
-                        if (option.checked) {
-                            selectedOption.push(option)
-                        }
-                    }
-
-                    setSelectionOptions(newOptions);
-
-                    setSelectedItems(array_unique(selectedOption));
-                }
-                break;
-            case selectionTypes.RANGE:
                 const newOptions = JSON.parse(JSON.stringify(selectionOptions));
-
-                let newSelectedRange = JSON.parse(JSON.stringify(selectedRange));
-
                 let selectedOption = null;
 
                 for (let option of newOptions) {
-                    if (option && option.value === value) {
+                    option.checked = (option.value === value);
+
+                    if (option.value === value) {
                         selectedOption = option;
                     }
                 }
 
+                setSelectionOptions(newOptions);
+
+                setSelectedItems(selectedOption ? [selectedOption] : []);
+
+                handleToggleDropdown(false, selectedOption ? selectedOption.value : '');
+
+                break;
+
+            case selectionTypes.MULTIPLE:
+
+                const newOptions2 = JSON.parse(JSON.stringify(selectionOptions));
+                let selectedOption2 = [];
+
+                for (let option of newOptions2) {
+                    if (option && option.value === value) {
+                        option.checked = !option.checked;
+                    }
+
+                    if (option.checked) {
+                        selectedOption2.push(option)
+                    }
+                }
+
+                setSelectionOptions(newOptions2);
+
+                setSelectedItems(array_unique(selectedOption2));
+                break;
+            case selectionTypes.RANGE:
+                const newOptions3 = JSON.parse(JSON.stringify(selectionOptions));
+
+                let newSelectedRange = JSON.parse(JSON.stringify(selectedRange));
+
+                let selectedOption3 = null;
+
+                for (let option of newOptions3) {
+                    if (option && option.value === value) {
+                        selectedOption3 = option;
+                    }
+                }
+
                 const data = {
-                    value: (selectedOption && typeof selectedOption === 'object') ? selectedOption.value : '',
-                    label: (selectedOption && typeof selectedOption === 'object') ? selectedOption.label : '',
+                    value: (selectedOption3 && typeof selectedOption3 === 'object') ? selectedOption3.value : '',
+                    label: (selectedOption3 && typeof selectedOption3 === 'object') ? selectedOption3.label : '',
                 };
 
                 if (rangeItemsPosition === 'start') {
@@ -239,7 +247,7 @@ const Selection = ({
 
                     newSelectedRange = compareMinAndMax(newSelectedRange);
 
-                    handleToggleDropdown(false);
+                    handleToggleDropdown(false, newSelectedRange);
                 }
 
                 setSelectedRange(newSelectedRange);
