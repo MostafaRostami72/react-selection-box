@@ -8,6 +8,12 @@ export interface IOptions {
     checked: boolean
 }
 
+export interface IOnChangeData {
+    value?: string[] | number[] | string | number | null
+    min?: string | number | null
+    max?: string | number | null
+}
+
 interface IValueAndLabelShape {
     value: number | string
     label: number | string
@@ -48,7 +54,7 @@ export interface IReactSelectionBoxProps {
     //selection options
     options: IOptions[];
     // selection onChange
-    onChange: (data: {} | null) => void
+    onChange: (data: IOnChangeData | null) => void
     // select container class name
     className?: string
     // in multiple type, you can select how many items can be displayed in the caption

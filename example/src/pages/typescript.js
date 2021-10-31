@@ -16,6 +16,7 @@ import Selection, {
     IReactSelectionBoxProps,
     ITypes,
     IOptions,
+    IOnChangeData,
     IDefaultSelectedRange,
     ITranslates
 } from 'react-selection-box';
