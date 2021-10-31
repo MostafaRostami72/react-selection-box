@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {useLocation} from "react-router-dom";
-import {DocumentTextIcon, ChevronRightIcon, CubeIcon, CursorClickIcon, KeyIcon, PhotographIcon} from '@heroicons/react/outline'
+import {DocumentTextIcon, ChevronRightIcon, CubeIcon, CursorClickIcon, KeyIcon, PhotographIcon, BeakerIcon} from '@heroicons/react/outline'
 
 const Sidebar = () => {
     const location = useLocation();
@@ -26,6 +26,12 @@ const Sidebar = () => {
             title: 'Example',
             active: (pathname === '/react-selection-box/examples'),
             icon: DocumentTextIcon
+        },
+        {
+            link: '/react-selection-box/typescript',
+            title: 'Typescript',
+            active: (pathname === '/react-selection-box/typescript'),
+            icon: BeakerIcon
         },
         {
             link: '/react-selection-box/props',

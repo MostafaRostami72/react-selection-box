@@ -1,24 +1,24 @@
 import * as React from 'react';
 
-type ITypes = 'single' | 'multiple' | 'range'
+export type ITypes = 'single' | 'multiple' | 'range'
 
-interface IOptions {
+export interface IOptions {
     value: number | string
     label: number | string
     checked: boolean
 }
 
-interface IValueAnsLabelShape {
+interface IValueAndLabelShape {
     value: number | string
     label: number | string
 }
 
-interface IDefaultSelectedRange {
-    min?: IValueAnsLabelShape,
-    max?: IValueAnsLabelShape
+export interface IDefaultSelectedRange {
+    min?: IValueAndLabelShape,
+    max?: IValueAndLabelShape
 }
 
-interface ITranslates {
+export interface ITranslates {
     label?: {
         from: string,
         to: string

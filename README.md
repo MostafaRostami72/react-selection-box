@@ -7,6 +7,7 @@
 ## Full Document and Demo
 -   [Document And Demo](https://mostafarostami72.github.io/react-selection-box/)
 
+### ** Supports typescript **
 
 ## Install
 

@@ -14,6 +14,7 @@ import "nprogress/nprogress.css";
 const Home = lazy(() => import('./pages/home'));
 const BasicUsage = lazy(() => import('./pages/basic_usage'));
 const Examples = lazy(() => import('./pages/examples'));
+const TypescriptPage = lazy(() => import('./pages/typescript'));
 const PropsPage = lazy(() => import('./pages/props'));
 const Styles = lazy(() => import('./pages/styles'));
 
@@ -69,6 +70,7 @@ const App = () => {
                                         <Switch>
                                             <Route path="/react-selection-box/basic_usage" exact component={BasicUsage}/>
                                             <Route path="/react-selection-box/examples" exact component={Examples}/>
+                                            <Route path="/react-selection-box/typescript" exact component={TypescriptPage}/>
                                             <Route path="/react-selection-box/props" exact component={PropsPage}/>
                                             <Route path="/react-selection-box/styles" exact component={Styles}/>
                                             <Route path="/react-selection-box/" component={Home}/>
