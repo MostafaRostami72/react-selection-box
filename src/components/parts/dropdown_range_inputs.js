@@ -28,7 +28,7 @@ const SelectionDropdownRangeInputs = ({setRangeItemsPosition, selectedRange, set
                    onFocus={() => setRangeItemsPosition('start')}
             />
 
-            <span className="rs-selection-dropdown-range-inputs__span">to</span>
+            <span className="rs-selection-dropdown-range-inputs__span">{lang.to}</span>
 
             <input type="tel"
                    value={maxValue}

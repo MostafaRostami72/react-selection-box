@@ -22,6 +22,7 @@ const SelectionDropdown = ({
                                selectionRef,
                                onChangeAutocomplete,
                                handleToggleDropdown,
+                               handleClickHeaderBackArrow,
                                autocomplete,
                                loading,
                                lang
@@ -65,7 +66,7 @@ const SelectionDropdown = ({
 
                 <SelectionDropdownHeader
                     selectionLabel={selectionLabel}
-                    handleToggleDropdown={handleToggleDropdown}
+                    handleClickHeaderBackArrow={handleClickHeaderBackArrow}
                 />
 
                 {

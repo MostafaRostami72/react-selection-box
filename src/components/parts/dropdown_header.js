@@ -1,7 +1,7 @@
 import React from 'react';
 import ArrowLeftIcon from "../atoms/icons/arrow-left";
 
-const SelectionDropdownHeader = ({selectionLabel, handleToggleDropdown}) => {
+const SelectionDropdownHeader = ({selectionLabel, handleClickHeaderBackArrow}) => {
 
     return (
         <div className="rs-selection-dropdown-header">
@@ -9,7 +9,7 @@ const SelectionDropdownHeader = ({selectionLabel, handleToggleDropdown}) => {
                 {selectionLabel}
             </div>
 
-            <button className="rs-selection-dropdown-header__back" onClick={() => handleToggleDropdown(false)}>
+            <button className="rs-selection-dropdown-header__back" onClick={handleClickHeaderBackArrow}>
                 <ArrowLeftIcon/>
             </button>
         </div>

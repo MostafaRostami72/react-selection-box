@@ -54,6 +54,8 @@ const Selection = ({
 
             setSelectedItems(checked);
         }
+
+        setSelectedRange(defaultSelectedRange);
     }, [options]);
 
     useEffect(() => {
@@ -141,6 +143,19 @@ const Selection = ({
 
             handleToggleDropdown(false, value);
         }
+    }
+
+    const handleClickHeaderBackArrow = () => {
+        let value = null;
+
+        switch (type) {
+            case selectionTypes.SINGLE:
+                if (selectedItems && selectedItems.length) {
+                    value = selectedItems[0]?.value
+                }
+        }
+
+        handleToggleDropdown(false, value);
     }
 
     const handleClearSelection = () => {
@@ -301,6 +316,7 @@ const Selection = ({
                 setSelectedRange={setSelectedRange}
                 selectionRef={selectionRef}
                 onChangeAutocomplete={onChangeAutocomplete}
+                handleClickHeaderBackArrow={handleClickHeaderBackArrow}
                 autocomplete={autocomplete}
                 loading={loading}
                 lang={lang}
